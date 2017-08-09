@@ -3,16 +3,15 @@
 SAMPLE
 ----------------------------------------
 
-Challenge: Write function named test that returns the string "This Works!". 
-Solution: This one has already been complete for you. 
+Challenge: Write function named test that returns the string "This Works!".
+Solution: This one has already been complete for you.
 
 */
 
 function test() {
- var string ="This Works!";
+ var string = "This Works!";
  return string;
 }
-
 
 
 /*
@@ -25,13 +24,15 @@ Write function named sum that will take an array of numbers and return the sum o
 Example: if you pass it [1,2,3] then it should return 6 (which is 1 + 2 + 3)
 */
 
+function sum (array) {
 
+  var accumulator = 0
 
-
-
-
-
-
+  for (i = 0; i<array.length; i++) {
+    accumulator += array[i];
+  }
+  return accumulator;
+}
 
 /*
 ----------------------------------------
@@ -43,7 +44,12 @@ Write function named doubleNumbers that will take an array of numbers and return
 Example: if you pass it [1,2,3] then it should return [2,4,6]
 */
 
+function doubleNumbers (array) {
 
+return array.map(function(i){
+  return i * 2;
+},0);
+}
 
 
 
@@ -65,12 +71,12 @@ Examples:
 - if you call multiplyNumbers([1,2,3], 5) you'd get [5,10,15]
 */
 
+function multiplyNumbers (array, i) {
+  return array.map(function(j){
+    return j * i;
+  })
 
-
-
-
-
-
+}
 
 
 /*
@@ -83,13 +89,16 @@ Write function named doubleLetters that will take a string and double every lett
 Example: if you pass it "abc" then it should return "aabbcc"
 */
 
+function doubleLetters (string) {
 
+  var accumulator = '';
 
-
-
-
-
-
+  for (i = 0; i<string.length; i++) {
+    var c = string.charAt(i);
+    accumulator += c+c;
+  }
+  return accumulator;
+}
 
 
 /*
@@ -104,14 +113,18 @@ Example: if you pass it ["a", "b", "c"] and ["d", "e", "f"] then it should retur
 NOTE: you can assume each input will be the same length
 */
 
+function interleave(arr1,arr2){
 
+  let interArr = [];
 
+  for(i = 0; i < arr1.length; i++){
+    interArr.push(arr1[i])
+    interArr.push(arr2[i])
+  }
 
+  return interArr;
 
-
-
-
-
+}
 
 
 /*
@@ -124,12 +137,17 @@ Write function named createRange that will take a number and a default value and
 Example: if you pass it 4 and "Hello" then it should return ["Hello", "Hello", "Hello", "Hello"]
 */
 
+function createRange (num,value) {
 
+  var arr = [];
 
+  for (i = 0; i < num; i++){
+    arr.push(value)
+  }
 
+  return arr;
 
-
-
+}
 
 /*
 ----------------------------------------
@@ -144,9 +162,16 @@ If you pass it ["quick", "brown", "fox"] then it should return { "quick": 0, "br
 */
 
 
+function flipArray(arr){
 
+  var obj = {};
 
+  for(i = 0; i < arr.length; i++){
+    obj[arr[i]] = i;
+  }
 
+  return obj;
+}
 
 
 
@@ -163,7 +188,15 @@ If you pass it [[2014, "Horse"], [2015, "Sheep"]] then it should return { 2014: 
 
 */
 
+function arraysToObject(arr){
 
+  var obj = {};
+
+  for(i = 0; i <arr.length; i++){
+    obj[arr[i][0]] = arr[i][1];
+  }
+  return obj;
+}
 
 
 
@@ -184,13 +217,15 @@ If you pass it "hello" then it should return "olleh"
 */
 
 
+function reverseString(str){
 
+  var revStr = '';
 
-
-
-
-
-
+  for(i = str.length-1; i >= 0; i--){
+    revStr+=str.charAt(i)
+  }
+  return revStr;
+}
 
 
 
@@ -208,11 +243,21 @@ If you pass it "yay" then it should return false because it's odd
 If you pass it "heehaw" then it should return false because "hee" doesn't equal "haw"
 */
 
+function repeats(str){
 
+  if(str.length % 2 !== 0){
+    return false
+  }
 
+  str.split('');
 
-
-
+  for(i = 0; i < str.length/2; i++){
+    if(str[i] !== str[i+str.length/2]){
+      return false
+    }
+  }
+  return true;
+}
 
 
 /*
@@ -228,11 +273,23 @@ If you pass it "abcdef" then it should return "ace" because those represent ever
 */
 
 
+function everyOther(str){
 
+  if(str.length === 0){
+    return str;
+  }
 
+  var halfStr = str.split('').filter(function(el,i){
+    if(i == 0 || i % 2 == 0){
+      return el
+    }
+  })
 
+  var newStr = halfStr.join('');
 
+  return newStr;
 
+}
 
 /*
 ----------------------------------------
@@ -248,7 +305,17 @@ If you pass "aba" it should return false
 */
 
 
+function allEqual(str){
 
+  var valid = true
+
+  str.split('').forEach(function(el,i,arr){
+    if (i < arr.length-1 && el !== arr[i+1]){
+      valid = false
+    }
+  })
+  return valid;
+}
 
 
 
@@ -794,4 +861,4 @@ If you pass {1999: 4036, 2000: 7654} and 4036, it should return true
 
 
 
-// 
+//
